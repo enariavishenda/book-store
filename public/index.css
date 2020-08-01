@@ -1,0 +1,12 @@
+html {
+    height: 100%;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-scrollbar-width: 0px;
+}
+
+.scroll {
+    overflow: hidden;
+    -ms-overflow: hidden;
+}
