@@ -1,8 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./components/app";
+import BookService from "./services/bookstore-service";
+import store from "./store";
+import ErrorBoundry from "./components/error-boundry";
+import {BookProvider} from "./components/service-context";
+import {Provider} from "react-redux";
 
-ReactDOM.render(<App />,
+const book_api = new BookService()
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ErrorBoundry>
+            <BookProvider value={book_api}>
+                <App />
+            </BookProvider>
+        </ErrorBoundry>
+    </Provider>
+    ,
   document.getElementById('root')
 );
 

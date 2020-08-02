@@ -1,15 +1,14 @@
 import React from "react";
 import {BookConsumer} from "../service-context";
 
-const withService = (mapMethodsToProps) => (Details) => {
+const withService = () => (Details) => {
     return (props) => {
         return (
             <BookConsumer>
                 {
                     (book_api) => {
-                        const serviceProps = mapMethodsToProps(book_api)
                         return (
-                            <Details {...props} {...serviceProps}/>
+                            <Details {...props} book_api={book_api}/>
                         )
                     }
                 }

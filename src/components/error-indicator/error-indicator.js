@@ -9,7 +9,9 @@ const Error = () => {
                 <img src={icon_1} alt="error" className="icon_1"/>
             </span>
             <p>
-                Что то пошло не так, сервис недоступен
+                <div className="alert alert-dismissible alert-danger">
+                    <strong>Что то пошло не так, сервис недоступен</strong>
+                </div>
             </p>
         </div>
     )

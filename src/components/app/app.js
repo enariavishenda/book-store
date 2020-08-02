@@ -1,24 +1,19 @@
 import React from "react";
+
 import Error from "../error-indicator";
 import Header from "../header";
 import Loading from "../loading";
-import ErrorBoundry from "../error-boundry";
-import {BookProvider} from "../service-context";
-import BookService from "../../services/bookstore-service";
 
-const App = () => {
-    const book_api = new BookService()
+import withService from '../hoc'
+
+const App = ({book_api}) => {
+    console.log(book_api.getBooks())
     return (
-        <ErrorBoundry>
-            <BookProvider value={book_api}>
-                <div>
-                    <Header />
-                    <Error />
-                    <Loading />
-                </div>
-            </BookProvider>
-        </ErrorBoundry>
+        <div>
+            <Header />
+            <Error />
+            <Loading />
+        </div>
     )
 }
-
-export default App
+export default withService()(App)
