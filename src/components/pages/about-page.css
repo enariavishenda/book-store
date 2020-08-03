@@ -1,0 +1,15 @@
+.about {
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.logo {
+    min-width: 25%;
+    max-width: 50%;
+
+}
