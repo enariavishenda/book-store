@@ -2,7 +2,7 @@ import React from "react";
 import './header.css';
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({numItems}) => {
     return (
         <nav className="nav navbar navbar-expand-lg navbar-light bg-light ">
             <Link className="navbar-brand"
@@ -41,7 +41,7 @@ const Header = () => {
                     <li className="nav-item basket">
                         <Link className="nav-link" to="/basket/">Корзина
                             <span> </span>
-                            <span className="badge badge-primary badge-pill">4</span>
+                            <span className="badge badge-primary badge-pill">{numItems}</span>
                         </Link>
                     </li>
                 </ul>
