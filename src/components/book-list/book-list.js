@@ -19,7 +19,7 @@ class BookList extends Component {
         return (
             <ul>
                 {
-                    books.map ((book) => {
+                    books.map((book) => {
                         return (
                             <li key={book.id}><BookListItem book={book} /></li>
                         )
