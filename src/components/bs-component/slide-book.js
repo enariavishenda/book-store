@@ -5,44 +5,36 @@ import {connect} from 'react-redux';
 import 'swiper/swiper.scss';
 import './slide-book.css'
 import {withService, compose} from '../hoc';
-import {booksLoaded} from "../../actions/actions";
+import {booksLoaded, booksRequested} from "../../actions/actions";
 import BookListItem from "../book-list-item";
+import withBooks from "../hoc/hoc-get-books";
 
-class Swipe extends Component { //Нужно переделать в HOC
-
-    componentDidMount() {
-        const { book_api } = this.props
-        const data = book_api.getBooks()
-        this.props.booksLoaded(data)
-    }
-
-    render () {
-        const { books } = this.props
-        return (
-            <div>
-                <Swiper slidesPerView={1} spaceBetween={1}>
-                    {
-                        books.filter((item) => item.popular > 5)
-                            .map((book) => {
-                            return (
-                                <SwiperSlide><BookListItem book={book} /></SwiperSlide>
-                            )
-                        })
-                    }
-                </Swiper>
-            </div>
-        )
-    }
+const mapStateToProps = ({ books, loading }) => {
+    return { books, loading }
 }
 
-const mapStateToProps = ({ books }) => {
-    return { books }
+const mapDispatchToProps = {
+    booksLoaded,
+    booksRequested
 }
 
-const mapDispatchToProps = {booksLoaded}
+const Swipe =({arr}) => {
+    return <div>
+        <Swiper slidesPerView={1} spaceBetween={1}>
+            {
+                arr.filter((item) => item.popular > 5)
+                    .map((book) => {
+                        return (
+                            <SwiperSlide><BookListItem book={book} /></SwiperSlide>
+                        )
+                    })
+            }
+        </Swiper>
+    </div>
+}
 
 export default compose(
     withService(),
     connect(mapStateToProps, mapDispatchToProps)
-)(Swipe)
+)(withBooks(Swipe))
 
