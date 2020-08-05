@@ -10,9 +10,11 @@ export default class BookService {
     ]
 
     getBooks() {
-        return new Promise((resolve) => {
-            setTimeout(() => {resolve(this.data)}, 500)
-
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(this.data);
+                reject(new Error('Что-то не так'))
+            } , 500)
         })
     }
 }

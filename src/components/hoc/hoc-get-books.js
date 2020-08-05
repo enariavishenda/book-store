@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import Loading from "../loading";
+import Error from "../error-indicator";
 
 const withBooks = (View) => {
+
     return class extends Component {
         componentDidMount() {
-            const {book_api, booksLoaded, booksRequested} = this.props
-            booksRequested()
-            book_api.getBooks()
-                .then((data) => {
-                    booksLoaded(data)
-                })
+            this.props.fetchBooks()
         }
         render() {
-            const {books, loading} = this.props
+            const {books, loading, error} = this.props
             if (loading) {
                 return <Loading/>
+            }
+            if (error) {
+                return <Error />
             }
             return <View arr={books}/>
         }

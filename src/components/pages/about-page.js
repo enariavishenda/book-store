@@ -6,7 +6,7 @@ const AboutPage = () => {
     return (
         <div className="about shadow-sm  bg-white rounded">
             <div className="card border-light mb-3">
-                <div className="card-header"></div>
+                <div className="card-header"> </div>
                 <div className="card-body">
                     <img className="logo" src={logo} alt={logo}/>
                     <h4 className="card-title">Мы продаем только качественную литературу</h4>
