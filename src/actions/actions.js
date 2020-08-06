@@ -19,6 +19,13 @@ const booksError = (error) => {
     }
 }
 
+const bookAddedToCart = (bookId) => {
+    return {
+        type: 'BOOK_ADDED_TO_CART',
+        payload: bookId
+    }
+}
+
 const fetchBooks = (book_api, dispatch) => () => {
     dispatch(booksRequested())
     book_api.getBooks()
@@ -27,5 +34,6 @@ const fetchBooks = (book_api, dispatch) => () => {
 }
 
 export {
-    fetchBooks
+    fetchBooks,
+    bookAddedToCart
 }

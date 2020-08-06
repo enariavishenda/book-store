@@ -9,14 +9,14 @@ const withBooks = (View) => {
             this.props.fetchBooks()
         }
         render() {
-            const {books, loading, error} = this.props
+            const {books, loading, error, onAddedToCart} = this.props
             if (loading) {
                 return <Loading/>
             }
             if (error) {
                 return <Error />
             }
-            return <View arr={books}/>
+            return <View books={books} onAddedToCart={onAddedToCart}/>
         }
     }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 
-import {fetchBooks} from "../../actions";
+import {fetchBooks, bookAddedToCart} from "../../actions";
 import {compose, withService, withBooks} from "../hoc";
 import {BooksMap, SwipeMap} from "./index";
 
@@ -12,9 +12,10 @@ const mapStateToProps = ({ books, loading, error }) => {
 const mapDispatchToProps = (dispatch, ownProps) => () => {
     const {book_api} = ownProps
     return  {
-        fetchBooks: fetchBooks(book_api, dispatch)
+        fetchBooks: fetchBooks(book_api, dispatch),
+        onAddedToCart: (id) => dispatch(bookAddedToCart(id))
+        }
     }
-}
 
 const BooksList = compose(
     withService(),

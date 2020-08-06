@@ -1,10 +1,14 @@
 import BookListItem from "../book-list-item";
 import React from "react";
 
-const BooksMap = ({arr}) => {
+const BooksMap = ({books, onAddedToCart}) => {
 
-    return arr.map((item) => {
-        return (<li key={item.id}><BookListItem book={item}/></li>)
+    return books.map((item) => {
+        return (<li key={item.id}>
+            <BookListItem
+                onAddedToCart={() => onAddedToCart(item.id)}
+                book={item}
+            /></li>)
     })
 }
 export default BooksMap

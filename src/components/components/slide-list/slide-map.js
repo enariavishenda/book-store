@@ -5,14 +5,17 @@ import React from "react";
 import 'swiper/swiper.scss';
 import './slide-map.css'
 
-const SwipeMap =({arr}) => {
+const SwipeMap =({books}) => {
     return <div>
         <Swiper slidesPerView={1} spaceBetween={1}>
             {
-                arr.filter((item) => item.popular > 5)
+                books.filter((item) => item.popular > 5)
                     .map((book) => {
                         return (
-                            <SwiperSlide key={book.id}><BookListItem book={book} /></SwiperSlide>
+                            <SwiperSlide key={book.id}>
+                                <BookListItem
+                                    book={book} />
+                            </SwiperSlide>
                         )
                     })
             }
