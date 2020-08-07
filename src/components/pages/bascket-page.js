@@ -3,14 +3,15 @@ import React from "react";
 import { connect } from 'react-redux';
 
 import './basket-page.css';
+import {onIncrement, onDelete, onDecrement} from "../../actions";
 
 const BasketPage = ({items, total, onInc, onDec, onDel}) => {
     const renderRow = (item, idx) => {
-        const { id, name, count, total } = item
+        const { id, title, count, total } = item
         return (
             <tr key={idx}>
                 <th scope="row">{idx + 1}</th>
-                <td>{name}</td>
+                <td>{title}</td>
                 <td>{count}</td>
                 <td>${total}</td>
                 <td className="buttons">
@@ -60,19 +61,17 @@ const BasketPage = ({items, total, onInc, onDec, onDel}) => {
     )
 }
 
-const mapStateToProps = ({cartItems, orderTotal }) => {
+const mapStateToProps = ({shoppingCart: {cartItems, orderTotal }}) => {
     return {
         items: cartItems,
         total: orderTotal
     }
 }
 
-const mapDispatchToProps = () => {
-    return {
-        onInc: (id) => {console.log(`inc ${id}` )},
-        onDec: (id) => {console.log(`dec ${id}` )},
-        onDel: (id) => {console.log(`del ${id}` )},
-    }
+const mapDispatchToProps = {
+        onInc: onIncrement,
+        onDec: onDecrement,
+        onDel: onDelete
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasketPage)

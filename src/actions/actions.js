@@ -26,7 +26,28 @@ const bookAddedToCart = (bookId) => {
     }
 }
 
-const fetchBooks = (book_api, dispatch) => () => {
+const onIncrement = (bookId) => {
+    return {
+        type: 'BOOK_ADDED_TO_CART',
+        payload: bookId
+    }
+}
+
+const onDecrement = (bookId) => {
+    return {
+        type: 'BOOK_ON_DECREMENT',
+        payload: bookId
+    }
+}
+
+const onDelete = (bookId) => {
+    return {
+        type: 'BOOK_ON_DELETE',
+        payload: bookId
+    }
+}
+
+const fetchBooks = (book_api) => () => (dispatch) => {
     dispatch(booksRequested())
     book_api.getBooks()
         .then((data) => dispatch(booksLoaded(data)))
@@ -35,5 +56,8 @@ const fetchBooks = (book_api, dispatch) => () => {
 
 export {
     fetchBooks,
-    bookAddedToCart
+    bookAddedToCart,
+    onIncrement,
+    onDecrement,
+    onDelete
 }

@@ -1,6 +1,7 @@
-import { fetchBooks, bookAddedToCart } from "./actions";
+import { fetchBooks, bookAddedToCart, onIncrement, onDelete, onDecrement } from "./actions";
 
 export {
     fetchBooks,
-    bookAddedToCart
+    bookAddedToCart,
+    onIncrement, onDelete, onDecrement
 }
