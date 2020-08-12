@@ -5,7 +5,7 @@ import React from "react";
 import 'swiper/swiper.scss';
 import './slide-map.css'
 
-const SwipeMap =({books}) => {
+const SwipeMap =({books, onAddedToCart}) => {
     return <div>
         <Swiper slidesPerView={1} spaceBetween={1}>
             {
@@ -13,7 +13,7 @@ const SwipeMap =({books}) => {
                     .map((book) => {
                         return (
                             <SwiperSlide key={book.id}>
-                                <BookListItem
+                                <BookListItem onAddedToCart={() => onAddedToCart(book.id)}
                                     book={book} />
                             </SwiperSlide>
                         )

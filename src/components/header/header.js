@@ -1,6 +1,8 @@
 import React from "react";
-import './header.css';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import './header.css';
 
 const Header = ({numItems}) => {
     return (
@@ -57,4 +59,11 @@ const Header = ({numItems}) => {
     )
 }
 
-export default Header
+
+const mapStateToProps = ({shoppingCart: {numBasketItems}}) => {
+    return {
+        numItems: numBasketItems
+    }
+}
+
+export default connect(mapStateToProps)(Header)

@@ -29,15 +29,29 @@ const updateCartItem = (book, item = {}, lambda) => {
     }
 }
 
+const mapTotalItem = (item) => item.total
+const mapCountItem = (item) => item.count
+
+const updateOrderTotal = (books, fn) => {
+    const item = books.map(fn).reduce((a, b) => a + b, 0)
+    if ( item === 0) {
+        return ''
+    } else
+        return item
+}
+
+
 const updateOrderItems = (state, bookId, lambda) => {
     const { bookList: { books }, shoppingCart: { cartItems }} = state
     const book = books.find((book) => book.id === bookId)
     const index = cartItems.findIndex(({id}) => id === bookId)
     const item = cartItems[index]
     const newItem = updateCartItem(book, item, lambda)
+    const updateNewCartItems = updateCartItems(cartItems, newItem, index)
     return {
-        cartItems: updateCartItems(cartItems, newItem, index),
-        orderTotal: 0
+        cartItems: updateNewCartItems,
+        orderTotal: updateOrderTotal(updateNewCartItems, mapTotalItem),
+        numBasketItems: updateOrderTotal(updateNewCartItems, mapCountItem)
     }
 }
 
@@ -46,7 +60,8 @@ const updateShoppingCart = (state, action) => {
     if (state === undefined){
         return {
             cartItems: [],
-            orderTotal: 0
+            orderTotal: '',
+            numBasketItems: ''
         }
     }
     switch (action.type) {

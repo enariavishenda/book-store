@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './basket-page.css';
 import {onIncrement, onDelete, onDecrement} from "../../actions";
 
-const BasketPage = ({items, total, onInc, onDec, onDel}) => {
+const BasketPage = ({items, orderTotal, onInc, onDec, onDel}) => {
     const renderRow = (item, idx) => {
         const { id, title, count, total } = item
         return (
@@ -55,7 +55,7 @@ const BasketPage = ({items, total, onInc, onDec, onDel}) => {
                 </tbody>
             </table>
             <div className="total">
-                Всего: ${total}
+                {(orderTotal) ? `Всего: $${orderTotal}` : 'Вы еще ничего не выбрали'}
             </div>
         </div>
     )
@@ -64,7 +64,7 @@ const BasketPage = ({items, total, onInc, onDec, onDel}) => {
 const mapStateToProps = ({shoppingCart: {cartItems, orderTotal }}) => {
     return {
         items: cartItems,
-        total: orderTotal
+        orderTotal: orderTotal
     }
 }
 

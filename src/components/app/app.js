@@ -16,7 +16,7 @@ const App = () => {
     return (
         <Router>
             <div>
-                <Header numItems={3}/>
+                <Header />
                 <Switch>
                     <Route path="/" exact component={HomePage}/>
                     <Route path="/books/" component={BookPage}/>
