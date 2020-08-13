@@ -40,7 +40,9 @@ const Header = ({numItems}) => {
                     <li className="nav-item">
                         <Link className="nav-link" to="/about">Дополнительная информация</Link>
                     </li>
-                    <li className="nav-item basket">
+                </ul>
+                <ul className="navbar-nav mr-right">
+                    <li className="nav-item">
                         <Link className="nav-link" to="/basket/">Корзина
                             <span> </span>
                             <span className="badge badge-primary badge-pill">{numItems}</span>
@@ -48,11 +50,10 @@ const Header = ({numItems}) => {
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2"
-                           type="text"
-                           placeholder="Введите название"/>
-                        <button className="btn btn-secondary my-2 my-sm-0"
-                                type="submit">Поиск</button>
+                    <Link to='/login'>
+                    <button className="btn btn-secondary my-2 my-sm-0"
+                            type="submit">Войти</button>
+                    </Link>
                 </form>
             </div>
         </nav>

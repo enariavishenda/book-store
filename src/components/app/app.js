@@ -10,7 +10,7 @@ import AboutPage from "../pages/about-page";
 import BasketPage from "../pages/bascket-page";
 import Footer from "../footer";
 import BookPage from "../pages/book-page";
-
+import LoginPage from "../pages/login-page";
 
 const App = () => {
     return (
@@ -27,6 +27,7 @@ const App = () => {
                     <Route path="/books/economic/" exact component={Loading}/>
                     <Route path="/books/economic/:id" component={Error}/>
                     <Route path="/about" component={AboutPage}/>
+                    <Route path="/login" component={LoginPage}/>
                     <Route path="/basket" component={BasketPage}/>
                     <Route render={() => {
                         return (

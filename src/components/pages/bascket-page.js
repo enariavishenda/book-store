@@ -37,7 +37,7 @@ const BasketPage = ({items, orderTotal, onInc, onDec, onDel}) => {
     return (
         <div className="basket-list">
             <h5 className="text-center">Ваш заказ</h5>
-            <table className="table table-hover">
+            {(orderTotal) ? <table className="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">№</th>
@@ -53,9 +53,9 @@ const BasketPage = ({items, orderTotal, onInc, onDec, onDel}) => {
                     items.map(renderRow)
                 }
                 </tbody>
-            </table>
+            </table> : <h4>Вы еще не добавили товар в корзину</h4>}
             <div className="total">
-                {(orderTotal) ? `Всего: $${orderTotal}` : 'Вы еще ничего не выбрали'}
+                {(orderTotal) ? `Всего: $${orderTotal}` : ''}
             </div>
         </div>
     )

@@ -29,9 +29,6 @@ const updateCartItem = (book, item = {}, lambda) => {
     }
 }
 
-const mapTotalItem = (item) => item.total
-const mapCountItem = (item) => item.count
-
 const updateOrderTotal = (books, fn) => {
     const item = books.map(fn).reduce((a, b) => a + b, 0)
     if ( item === 0) {
@@ -50,8 +47,8 @@ const updateOrderItems = (state, bookId, lambda) => {
     const updateNewCartItems = updateCartItems(cartItems, newItem, index)
     return {
         cartItems: updateNewCartItems,
-        orderTotal: updateOrderTotal(updateNewCartItems, mapTotalItem),
-        numBasketItems: updateOrderTotal(updateNewCartItems, mapCountItem)
+        orderTotal: updateOrderTotal(updateNewCartItems, (item) => item.total),
+        numBasketItems: updateOrderTotal(updateNewCartItems, (item) => item.count)
     }
 }
 
