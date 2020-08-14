@@ -1,6 +1,6 @@
 import React from "react";
 
-import {SlideList} from "../components";
+import {SlideList} from "../../components";
 
 const HomePage = () => {
     return (

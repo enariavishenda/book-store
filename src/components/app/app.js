@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Error from "../error-indicator";
 import Header from "../header";
 import Loading from "../loading";
-import HomePage from '../pages/home-page'
-import AboutPage from "../pages/about-page";
-import BasketPage from "../pages/bascket-page";
+import HomePage from '../pages/home/home-page'
+import AboutPage from "../pages/about/about-page";
+import BasketPage from "../pages/basket/bascket-page";
 import Footer from "../footer";
-import BookPage from "../pages/book-page";
-import LoginPage from "../pages/login-page";
+import BookPage from "../pages/book/book-page";
+import LoginPage from "../pages/login/login-page";
 
 const App = () => {
     return (

@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from 'react-redux';
 
 import './basket-page.css';
-import {onIncrement, onDelete, onDecrement} from "../../actions";
+import {onIncrement, onDelete, onDecrement} from "../../../actions";
 
 const BasketPage = ({items, orderTotal, onInc, onDec, onDel}) => {
     const renderRow = (item, idx) => {
