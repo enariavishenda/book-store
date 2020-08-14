@@ -54,10 +54,18 @@ const fetchBooks = (book_api) => () => (dispatch) => {
         .catch((err) => dispatch(booksError(err)))
 }
 
+const logIn = (user) => {
+    return {
+        type: 'LOGIN_IN',
+        payload: user
+    }
+}
+
 export {
     fetchBooks,
     bookAddedToCart,
     onIncrement,
     onDecrement,
-    onDelete
+    onDelete,
+    logIn
 }

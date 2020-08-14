@@ -1,26 +1,35 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import compose from "../hoc/compose";
+import {withUsers} from "../hoc";
+import {bindActionCreators} from "redux";
+import fetchLogin from "../../services/dev-server";
 
-class LoginPage extends Component {
-
-    state = {users: []}
-
-    componentDidMount() {
-        fetch('/users')
-            .then(res => res.json())
-            .then(users => console.log(users));
-    }
-
-    render() {
-        return (
-            <div>
-                <h1 className="text-center">Login Page</h1>
-                {
-                    this.state.users.map(users =>
+const LoginPage = ({users}) => {
+    console.log(users)
+    return (
+        <div>
+            <h1 className="text-center">Login Page</h1>
+            {
+                users.map(users =>
                     <div key={users.id}>{users.username}</div>)
-                }
-            </div>
-        )
-    }
+            }
+        </div>
+    )
 }
 
-export default LoginPage
+
+const mapStateToProps = ({login: {users}}) => {
+    return {users}
+}
+
+const mapDispatchToProps = (dispatch) => () => {
+    return  bindActionCreators({
+        fetchLogin: fetchLogin,
+    }, dispatch)
+}
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withUsers
+)(LoginPage)
