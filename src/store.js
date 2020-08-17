@@ -1,7 +1,10 @@
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
-
+import createSagaMiddleware from 'redux-saga';
 import reducer from "./reducer";
+import {sagaWatcher} from "./reducer/sagas";
+
+const saga = createSagaMiddleware()
 
 const logMiddleware = ({getState}) => (next) => (action) => {
     console.log(action.type, getState())
@@ -27,7 +30,10 @@ const store = createStore(reducer,
     applyMiddleware(
         thunkMiddleware,
         stringMiddleware,
-        logMiddleware))
+        logMiddleware,
+        saga))
+
+saga.run(sagaWatcher)
 
 store.dispatch(delayActionCreator(5000))
 

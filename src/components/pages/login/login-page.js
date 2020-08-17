@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import compose from "../../hoc/compose";
 import {withUsers} from "../../hoc";
 import {bindActionCreators} from "redux";
-import fetchLogin from "../../../services/dev-server";
+import {fetchLogin} from "../../../actions";
 
 import './login-page.css'
 
@@ -13,22 +13,23 @@ const LoginPage = ({users}) => {
         <div>
             <h1 className="text-center">Login Page</h1>
             {
-                users.map(users =><div key={users.id}>
-                    {users.icon}
+                users.map(
+                    users =><div key={users.id}>
                     <div>{users.username}</div>
                 </div>
+
                 )
             }
-
             <div className="wrapper fadeInDown">
                 <div id="formContent">
-
                     <div className="fadeIn first">
-                        <img src={users.icon}
-                             id="icon"
+                        <img src={`http://localhost:3000${users.icon}`}
+                             key={users.id}
                              alt="User Icon"/>
                     </div>
-                    <form>
+                    <form onSubmit={(event) => {
+                        event.preventDefault()
+                    }}>
                         <input type="text"
                                id="login"
                                className="fadeIn second"
@@ -43,10 +44,12 @@ const LoginPage = ({users}) => {
                                        value="Войти"/>
                     </form>
                     <div id="formFooter">
-                        <a className="underlineHover" href="#">Забыли пароль?</a>
+                        <a className="underlineHover"
+                           href="#">Забыли пароль?</a>
                     </div>
                 </div>
             </div>
+        }
         </div>
     )
 }

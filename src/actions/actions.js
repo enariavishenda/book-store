@@ -61,11 +61,18 @@ const logIn = (user) => {
     }
 }
 
+const fetchLogin = () => {
+    return {
+        type: 'REQUEST_LOGIN'
+    }
+}
+
 export {
     fetchBooks,
     bookAddedToCart,
     onIncrement,
     onDecrement,
     onDelete,
-    logIn
+    logIn,
+    fetchLogin
 }
