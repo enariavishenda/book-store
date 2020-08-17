@@ -2,13 +2,11 @@ import {logIn} from "../actions/actions";
 
 
 const fetchLogin = () => {
-    return dispatch => {
-        fetch('/users')
-            .then(res => res.json())
-            .then(users => {
-                console.log('dispatch ',users)
-                dispatch(logIn(users))
-            });
+    return async dispatch => {
+        const responce = await fetch('/users')
+        const json = await responce.json()
+        console.log('dispatch ', json)
+        dispatch(logIn(json));
     }
 }
 

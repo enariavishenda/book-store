@@ -24,7 +24,10 @@ const delayActionCreator = (timeout) => (dispatch) => {
 }
 
 const store = createStore(reducer,
-    applyMiddleware(thunkMiddleware, stringMiddleware,logMiddleware))
+    applyMiddleware(
+        thunkMiddleware,
+        stringMiddleware,
+        logMiddleware))
 
 store.dispatch(delayActionCreator(5000))
 
