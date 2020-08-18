@@ -8,15 +8,12 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.json([{
+  res.json({
     id: 1,
     username: "Тензор Антонович",
+    password: "Луна в небе"
     // icon: pepe1
-  },{
-    id: 2,
-    username: "Лазар Вячеславович",
-    // icon: pepe2
-  }]);
+  });
 });
 
 module.exports = router;

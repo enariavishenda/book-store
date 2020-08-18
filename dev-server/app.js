@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var passport = require('passport')
+var config = require('./db')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,5 +42,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+mongoose.connect(config.DB, {useNewUrlParser: true}).then(
+        () => {console.log('Database connected')},
+        err => {console.log('Not found database' + err)},
+    );
+
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
 module.exports = app;

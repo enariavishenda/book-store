@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, compose, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import createSagaMiddleware from 'redux-saga';
 import reducer from "./reducer";
@@ -26,12 +26,17 @@ const delayActionCreator = (timeout) => (dispatch) => {
     }), timeout)
 }
 
-const store = createStore(reducer,
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const middleware = composeEnhancer(
     applyMiddleware(
         thunkMiddleware,
         stringMiddleware,
         logMiddleware,
-        saga))
+        saga)
+)
+
+const store = createStore(reducer, middleware)
 
 saga.run(sagaWatcher)
 

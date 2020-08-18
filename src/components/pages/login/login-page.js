@@ -8,23 +8,15 @@ import {fetchLogin} from "../../../actions";
 import './login-page.css'
 
 const LoginPage = ({users}) => {
-    console.log(users)
+    const { id, username, password } = users
     return (
         <div>
             <h1 className="text-center">Login Page</h1>
-            {
-                users.map(
-                    users =><div key={users.id}>
-                    <div>{users.username}</div>
-                </div>
-
-                )
-            }
             <div className="wrapper fadeInDown">
                 <div id="formContent">
                     <div className="fadeIn first">
-                        <img src={`http://localhost:3000${users.icon}`}
-                             key={users.id}
+                        <img src={`http://localhost:3000`}
+                             key={id}
                              alt="User Icon"/>
                     </div>
                     <form onSubmit={(event) => {
@@ -33,12 +25,14 @@ const LoginPage = ({users}) => {
                         <input type="text"
                                id="login"
                                className="fadeIn second"
-                               placeholder="login"/>
+                               placeholder="login"
+                               value={username}/>
                             <input
-                                type="text"
+                                type="password"
                                 id="password"
                                 className="fadeIn third"
-                                placeholder="password"/>
+                                placeholder="password"
+                                value={password}/>
                                 <input type="submit"
                                        className="fadeIn fourth"
                                        value="Войти"/>
