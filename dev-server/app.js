@@ -10,6 +10,7 @@ var config = require('./db')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var users = require('./routes/user');
 
 var app = express();
 
@@ -24,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/hello', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
@@ -48,7 +49,16 @@ mongoose.connect(config.DB, {useNewUrlParser: true}).then(
         err => {console.log('Not found database' + err)},
     );
 
+app.use(passport.initialize());
+require('./passport')(passport);
+
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
+
+app.use('/api/users', users);
+
+app.get('/', function(req, res) {
+  res.send('hello');
+});
 
 module.exports = app;

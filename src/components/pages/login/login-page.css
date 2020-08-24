@@ -223,6 +223,7 @@ input[type=text]:placeholder, input[type=password]:placeholder {
     outline: none;
 }
 
-#icon {
-    width:60%;
+.icon {
+    width:40%;
+    border-radius: 100px;
 }

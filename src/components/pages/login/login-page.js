@@ -7,15 +7,16 @@ import {fetchLogin} from "../../../actions";
 
 import './login-page.css'
 
-const LoginPage = ({users}) => {
-    const { id, username, password } = users
+const LoginPage = ({users}, errors) => {
+    const { id, username, password, icon } = users
     return (
         <div>
             <h1 className="text-center">Login Page</h1>
             <div className="wrapper fadeInDown">
                 <div id="formContent">
                     <div className="fadeIn first">
-                        <img src={`http://localhost:3000`}
+                        <img className="icon"
+                            src={icon}
                              key={id}
                              alt="User Icon"/>
                     </div>
@@ -49,8 +50,8 @@ const LoginPage = ({users}) => {
 }
 
 
-const mapStateToProps = ({login: {users}}) => {
-    return {users}
+const mapStateToProps = ({login: {users}, error: {errors}}) => {
+    return {users, errors}
 }
 
 const mapDispatchToProps = (dispatch) => () => {

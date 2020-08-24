@@ -61,10 +61,40 @@ const logIn = (user) => {
     }
 }
 
-const fetchLogin = () => {
+const fetchLogin = () => { //redux-saga
     return {
         type: 'REQUEST_LOGIN'
     }
+}
+
+const registerUser = (user, history) => dispatch => {
+    fetch('/api/users/register',{
+        method: "POST",
+        body: user
+    })
+        .then(res => history.push('/login'))
+        .catch(err => {
+            dispatch({
+                type: 'GET_ERRORS',
+                payload: err.response.data
+            });
+        });
+}
+
+const loginUser = (user) => dispatch => {
+    fetch('/api/users/login', {
+        method: "POST",
+        body: user
+    })
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(err => {
+            dispatch({
+                type: 'GET_ERRORS',
+                payload: err.response.data
+            });
+        });
 }
 
 export {
@@ -74,5 +104,7 @@ export {
     onDecrement,
     onDelete,
     logIn,
-    fetchLogin
+    fetchLogin,
+    registerUser,
+    loginUser
 }
