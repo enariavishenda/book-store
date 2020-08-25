@@ -1,12 +1,12 @@
-import def from '../components/pages/login/default.png'
+import def from '../components/pages/register/default.png'
 
 const updateLogin = (state, action) => {
     if (state === undefined) {
         return {
-            users: [{id: 0,
-                username: 'hello',
-                icon: 'https://www.vhv.rs/dpng/d/120-1200250_aws-simple-icons-non-service-specific-user-profile.png',
-                password: ''}]
+            users: {id: 0,
+                username: 'Вы не подключили dev-server',
+                icon: def,
+                password: 'хе-хе'}
         }
     }
     switch (action.type) {

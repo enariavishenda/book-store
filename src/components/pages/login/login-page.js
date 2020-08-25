@@ -4,15 +4,15 @@ import compose from "../../hoc/compose";
 import {withUsers} from "../../hoc";
 import {bindActionCreators} from "redux";
 import {fetchLogin} from "../../../actions";
+import {Link} from "react-router-dom";
 
 import './login-page.css'
 
 const LoginPage = ({users}, errors) => {
     const { id, username, password, icon } = users
     return (
-        <div>
-            <h1 className="text-center">Login Page</h1>
-            <div className="wrapper fadeInDown">
+        <div className="wrapper fadeInDown">
+            <h2 className="h2">Пожалуйста войдите</h2>
                 <div id="formContent">
                     <div className="fadeIn first">
                         <img className="icon"
@@ -39,12 +39,10 @@ const LoginPage = ({users}, errors) => {
                                        value="Войти"/>
                     </form>
                     <div id="formFooter">
-                        <a className="underlineHover"
-                           href="#">Забыли пароль?</a>
+                        <Link className="underlineHover fadeIn fifth"
+                              to="/register">Зарегистрироваться как новый пользователь</Link>
                     </div>
                 </div>
-            </div>
-        }
         </div>
     )
 }

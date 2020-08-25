@@ -43,7 +43,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+ //mongoose connect DataBase
 mongoose.connect(config.DB, {useNewUrlParser: true}).then(
         () => {console.log('Database connected')},
         err => {console.log('Not found database' + err)},

@@ -6,9 +6,13 @@
 }
 
 .h2 {
-    font-size: 18px;
+    text-align: center;
+    font-size: 16px;
     font-weight: 600;
-    color: #2f2d2d;
+    text-transform: uppercase;
+    display:inline-block;
+    margin: 40px 8px 10px 8px;
+    color: #cccccc;
 }
 
 .wrapper {
@@ -18,29 +22,20 @@
     justify-content: center;
     width: 100%;
     min-height: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     background: #fff;
-    padding: 10px;
+    padding: 30px;
     width: 90%;
     max-width: 450px;
     position: relative;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
-}
-
-#formFooter {
-    background-color: rgba(255, 255, 255, 0.68);
-    border-top: 1px solid rgba(79, 93, 97, 0.25);
-    padding: 10px;
-    text-align: center;
-    -webkit-border-radius: 0 0 20px 20px;
-    border-radius: 0 0 20px 20px;
 }
 
 h2.inactive {
@@ -87,7 +82,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
     transform: scale(0.95);
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -196,28 +191,9 @@ input[type=text]:placeholder, input[type=password]:placeholder {
 }
 
 .fadeIn.fifth {
-    -webkit-animation-delay: 2.5s;
-    -moz-animation-delay: 2.5s;
-    animation-delay: 2.5s;
-}
-
-.underlineHover:after {
-    display: block;
-    left: 0;
-    bottom: -10px;
-    width: 0;
-    height: 2px;
-    background-color: rgba(224, 224, 224, 0.9);
-    content: "";
-    transition: width 0.2s;
-}
-
-.underlineHover:hover {
-    color: rgba(75, 61, 61, 0.98);
-}
-
-.underlineHover:hover:after{
-    width: 100%;
+    -webkit-animation-delay: 1.2s;
+    -moz-animation-delay: 1.2s;
+    animation-delay: 1.2s;
 }
 
 *:focus {

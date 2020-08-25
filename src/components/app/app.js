@@ -11,6 +11,7 @@ import BasketPage from "../pages/basket/bascket-page";
 import Footer from "../footer";
 import BookPage from "../pages/book/book-page";
 import LoginPage from "../pages/login/login-page";
+import RegisterPage from "../pages/register/register-page";
 
 const App = () => {
     return (
@@ -28,6 +29,7 @@ const App = () => {
                     <Route path="/books/economic/:id" component={Error}/>
                     <Route path="/about" component={AboutPage}/>
                     <Route path="/login" component={LoginPage}/>
+                    <Route path="/register" component={RegisterPage}/>
                     <Route path="/basket" component={BasketPage}/>
                     <Route render={() => {
                         return (
