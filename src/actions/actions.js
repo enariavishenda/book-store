@@ -1,3 +1,6 @@
+import axios from 'axios';
+import jwt_decode from 'jwt-decode';
+import setAuthToken from "../utils/setAuthToken";
 
 const booksRequested = () => {
     return {
@@ -68,10 +71,7 @@ const fetchLogin = () => { //redux-saga
 }
 
 const registerUser = (user, history) => dispatch => {
-    fetch('/api/users/register',{
-        method: "POST",
-        body: user
-    })
+    axios.post('/users/register', user)
         .then(res => history.push('/login'))
         .catch(err => {
             dispatch({
@@ -81,13 +81,21 @@ const registerUser = (user, history) => dispatch => {
         });
 }
 
+const setCurrentUser = (decoded) => {
+    return {
+        type: 'SET_CURRENT_USER',
+        payload: decoded
+    }
+}
+
 const loginUser = (user) => dispatch => {
-    fetch('/api/users/login', {
-        method: "POST",
-        body: user
-    })
+    axios.post('/users/login', user)
         .then(res => {
-            console.log(res.data);
+            const {token} = res.data
+            localStorage.setItem('jwtToken', token)
+            setAuthToken(token)
+            const decoded = jwt_decode(token)
+            dispatch(setCurrentUser(decoded))
         })
         .catch(err => {
             dispatch({
@@ -95,6 +103,13 @@ const loginUser = (user) => dispatch => {
                 payload: err.response.data
             });
         });
+}
+
+const logoutUser = (history) => (dispatch) => {
+    localStorage.removeItem('jwtToken')
+    setAuthToken(false)
+    dispatch(setCurrentUser({}));
+    history.push('/login')
 }
 
 export {
@@ -106,5 +121,7 @@ export {
     logIn,
     fetchLogin,
     registerUser,
-    loginUser
+    loginUser,
+    setCurrentUser,
+    logoutUser
 }
