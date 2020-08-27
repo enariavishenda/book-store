@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-
 import Error from "../error-indicator";
 import Header from "../header";
 import Loading from "../loading";
@@ -12,6 +11,9 @@ import Footer from "../footer";
 import BookPage from "../pages/book/book-page";
 import LoginPage from "../pages/login/login-page";
 import RegisterPage from "../pages/register/register-page";
+
+
+
 
 const App = () => {
     return (
