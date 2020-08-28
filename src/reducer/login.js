@@ -4,7 +4,7 @@ const updateLogin = (state, action) => {
     if (state === undefined) {
         return {
             users: {id: 0,
-                username: 'Вы не подключили dev-server',
+                email: 'Вы не подключили dev-server',
                 icon: def,
                 password: 'хе-хе'}
         }
