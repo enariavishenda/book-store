@@ -12,9 +12,24 @@ import './login-page.css'
 class LoginPage extends Component {
 
     state = {
-        email: this.props.users.email,
-        password: this.props.users.password,
+        email: '',
+        password: '',
         errors: {}
+    }
+
+    inputChange = (label) => {
+        this.setState({
+            [label.target.name]: label.target.value
+        })
+    }
+
+    inputSubmit = (label) => {
+        label.preventDefault()
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        this.props.loginUser(user)
     }
 
     componentDidMount() {
@@ -34,26 +49,11 @@ class LoginPage extends Component {
         }
     }
 
-    inputChange = (label) => {
-        this.setState({
-            [label.target.name]: label.target.value
-        })
-    }
-
-    inputSubmit = (label) => {
-        label.preventDefault()
-        const user = {
-            email: this.state.email,
-            password: this.state.password
-        }
-        this.props.loginUser(user)
-    }
-
     render () {
 
         const { errors } = this.state
-        const { users, isAuthenticated, user } = this.props
-        const { id, icon, email, password } = users
+        const { users } = this.props
+        const { id, icon } = users
 
         return (
             <div className="wrapper fadeInDown">
@@ -65,20 +65,22 @@ class LoginPage extends Component {
                              key={id}
                              alt="User Icon"/>
                     </div>
-                    <form onSubmit={(event) => {
-                        event.preventDefault()
-                    }}>
+                    <form onSubmit={this.inputSubmit}>
                         <input type="text"
                                id="login"
                                className="fadeIn second"
-                               placeholder="login"
-                               value={email}/>
+                               placeholder="Email"
+                               onChange={this.inputChange}
+                               value={this.state.email}/>
+                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                         <input
                             type="password"
                             id="password"
                             className="fadeIn third"
                             placeholder="password"
-                            value={password}/>
+                            onChange={this.inputChange}
+                            value={this.state.password}/>
+                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                         <input type="submit"
                                className="fadeIn fourth"
                                value="Войти"/>
@@ -91,8 +93,6 @@ class LoginPage extends Component {
             </div>
         )
     }
-
-
 }
 
 
@@ -109,7 +109,7 @@ const mapStateToProps =
 const mapDispatchToProps = (dispatch) => () => {
     return  bindActionCreators({
         fetchLogin: fetchLogin,
-        loginUser: loginUser
+        loginUser: loginUser()
     }, dispatch)
 }
 
