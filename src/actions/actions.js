@@ -70,7 +70,7 @@ const fetchLogin = () => { //redux-saga
     }
 }
 
-const registerUser = (user, history) => dispatch => {
+const registerUser = (user, history) => (dispatch) => {
     axios.post('/users/register', user)
         .then(res => history.push('/login'))
         .catch(err => {
@@ -88,7 +88,7 @@ const setCurrentUser = (decoded) => {
     }
 }
 
-const loginUser = (user) => dispatch => {
+const loginUser = (user) => (dispatch) => {
     axios.post('/users/login', user)
         .then(res => {
             const {token} = res.data

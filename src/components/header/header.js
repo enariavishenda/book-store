@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {logoutUser} from "../../actions";
+import { withRouter } from 'react-router-dom';
 
 import './header.css';
 
@@ -90,4 +91,4 @@ const mapStateToProps = ({shoppingCart: {numBasketItems} , auth}) => {
     }
 }
 
-export default connect(mapStateToProps, {logoutUser})(Header)
+export default connect(mapStateToProps, {logoutUser})(withRouter(Header))
