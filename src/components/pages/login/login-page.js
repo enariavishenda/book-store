@@ -12,8 +12,8 @@ import './login-page.css'
 
 const LoginPage = ({...props}) => {
 
-    const {errors, users, inputSubmit, inputChange, state} = props
-    const {icon, id} = users
+    const { users, inputSubmit, inputChange, state } = props
+    const { icon, id } = users
     return (
         <div className="wrapper fadeInDown">
             <h2 className="h2">Пожалуйста войдите</h2>
@@ -32,7 +32,7 @@ const LoginPage = ({...props}) => {
                            name="email"
                            onChange={inputChange}
                            value={state.email}/>
-                    {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                    {state.errors.email && (<div className="text-danger">{state.errors.email}</div>)}
                     <input
                         type="password"
                         id="password"
@@ -41,7 +41,7 @@ const LoginPage = ({...props}) => {
                         name="password"
                         onChange={inputChange}
                         value={state.password}/>
-                    {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                    {state.errors.password && (<div className="text-danger">{state.errors.password}</div>)}
                     <input type="submit"
                            className="fadeIn fourth"
                            value="Войти"/>
@@ -62,10 +62,10 @@ LoginPage.propTypes = {
 }
 
 const mapStateToProps =
-    ({login: {users}, error: {errors}, auth: {isAuthenticated, user}}) => {
+    ({login: {users}, error, auth: {isAuthenticated, user}}) => {
     return {
         users,
-        errors,
+        error,
         isAuthenticated,
         user
     }

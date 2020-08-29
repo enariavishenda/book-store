@@ -16,12 +16,14 @@ const withUsers = (View) => {
             if (this.props.isAuthenticated) {
                 this.props.history.push('/')
             }
+            console.log('Did Mount hoc-get-users')
         }
 
         inputChange = (label) => {
             this.setState({
                 [label.target.name]: label.target.value
             })
+            console.log("console in inputChange",this.state)
         }
 
         inputSubmit = (label) => {
@@ -37,16 +39,16 @@ const withUsers = (View) => {
             if (nextProps.isAuthenticated) {
                 this.props.history.push('/')
             }
-            if (nextProps.errors) {
+            if (nextProps.error) {
                 this.setState({
-                    errors: nextProps.errors
+                    errors: nextProps.error
                 })
+                console.log(nextProps.error)
             }
         }
 
         render() {
             return <View users={this.props.users}
-                         errors={this.state.errors}
                          state={this.state}
                          inputChange={this.inputChange}
                          inputSubmit={this.inputSubmit}
