@@ -5,9 +5,9 @@ const updateLogin = (state, action) => {
         return {
             users: {
                 id: 0,
-                email: 'Вы не подключили dev-server',
+                email: '',
                 icon: def,
-                password: 'хе-хе'
+                password: ''
             }
         }
     }

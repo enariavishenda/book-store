@@ -11,9 +11,23 @@ import Footer from "../footer";
 import BookPage from "../pages/book/book-page";
 import LoginPage from "../pages/login/login-page";
 import RegisterPage from "../pages/register/register-page";
+import setAuthToken from "../../utils/setAuthToken";
+import jwt_decode from "jwt-decode";
+import store from "../../store";
+import {logoutUser, setCurrentUser} from "../../actions";
 
 
+if (localStorage.jwtToken) {
+    setAuthToken(localStorage.jwtToken)
+    const decoded = jwt_decode(localStorage.jwtToken)
+    store.dispatch(setCurrentUser(decoded))
 
+    const currentTime = Date.now()/1000
+    if (decoded.exp < currentTime) {
+        store.dispatch(logoutUser())
+        window.location.href= '/login'
+    }
+}
 
 const App = () => {
     return (

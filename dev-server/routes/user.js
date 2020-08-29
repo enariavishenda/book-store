@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
@@ -6,7 +7,9 @@ const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
 const User = require('../model/user');
 
-const router = express.Router();
+router.get('/hello', function(req, res) {
+    res.send('hello users get api/users/hello');
+});
 
 
 router.post('/register', function(req, res) {
@@ -21,7 +24,7 @@ router.post('/register', function(req, res) {
     }).then(user => {
         if(user) {
             return res.status(400).json({
-                email: 'Email already exists'
+                email: 'Адрес электронной почты уже существует'
             });
         }
         else {

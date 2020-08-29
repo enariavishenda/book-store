@@ -89,7 +89,7 @@ const setCurrentUser = (decoded) => {
 }
 
 const loginUser = (user) => (dispatch) => {
-    axios.post('/users/login', user)
+    axios.post('api/users/login', user)
         .then(res => {
             const {token} = res.data
             localStorage.setItem('jwtToken', token)

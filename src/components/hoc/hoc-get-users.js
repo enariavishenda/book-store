@@ -30,7 +30,7 @@ const withUsers = (View) => {
                 email: this.state.email,
                 password: this.state.password
             }
-            console.log(user)
+            this.props.loginUser(user)
         }
 
         componentWillReceiveProps(nextProps) {
