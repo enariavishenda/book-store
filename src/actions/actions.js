@@ -71,7 +71,7 @@ const fetchLogin = () => { //redux-saga
 }
 
 const registerUser = (user, history) => (dispatch) => {
-    axios.post('/users/register', user)
+    axios.post('api/users/register', user)
         .then(res => history.push('/login'))
         .catch(err => {
             dispatch({

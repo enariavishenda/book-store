@@ -14,7 +14,7 @@ module.exports = function validateRegisterInput(data) {
     if (Validator.isEmpty(data.name)) {
         errors.name = 'Поле имя обязательно для заполнения';
     }
-    if (Validator.isEmail(data.email)) {
+    if (Validator.isEmpty(data.email)) {
         errors.email = 'Поле адреса почты обязательно для заполнения';
     }
     if (Validator.isEmpty(data.email)) {

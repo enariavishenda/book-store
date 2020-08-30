@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 
-
-const withUsers = (View) => {
+const withRegister = (View) => {
 
     return class extends Component {
 
         state = {
+            name: '',
             email: '',
             password: '',
+            password_confirm: '',
             errors: {}
         }
 
         componentDidMount() {
-            this.props.fetchLogin()
             if (this.props.isAuthenticated) {
                 this.props.history.push('/')
             }
@@ -27,10 +27,12 @@ const withUsers = (View) => {
         inputSubmit = (label) => {
             label.preventDefault()
             const user = {
+                name: this.state.name,
                 email: this.state.email,
-                password: this.state.password
+                password: this.state.password,
+                password_confirm: this.state.password_confirm
             }
-            this.props.loginUser(user)
+            this.props.registerUser(user, this.props.history)
         }
 
         componentWillReceiveProps(nextProps) {
@@ -46,12 +48,11 @@ const withUsers = (View) => {
         }
 
         render() {
-            return <View users={this.props.users}
-                         state={this.state}
+            return <View state={this.state}
                          inputChange={this.inputChange}
                          inputSubmit={this.inputSubmit}
             />
         }
     }
 }
-export default withUsers
+export default withRegister
