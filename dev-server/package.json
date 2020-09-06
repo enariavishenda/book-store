@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon --exec babel-node ./bin/www",
+    "build" : "babel ./bin/www --out-file ./build/main.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,6 +23,8 @@
     "validator": "^13.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
     "nodemon": "^2.0.4"
   }
 }
