@@ -30,6 +30,6 @@ const BookSchema = new Schema({
     createdAt : { type: Date }
 })
 
-const Books = mongoose.model('books', BookSchema)
+const Book = mongoose.model('books', BookSchema)
 
-module.exports = Books
+module.exports = Book

@@ -2,7 +2,7 @@
 // var pepe1 = require('../public/images/608.png');
 // var pepe2 = require('../public/images/626.jpg');
 
-const express = require('express');
+import express from 'express'
 const router = express.Router();
 
 

@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express' //babel test
+
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
