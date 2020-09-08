@@ -1,6 +1,6 @@
 export default class BookService {
 
-    data =[
+    data = [
         { id: 1, title: 'Отдельная реальность', author: 'Карлос Кастанеда', genre: 'Эзотерика', popular: 5, price: 12, coverImage:'https://cdn1.ozone.ru/multimedia/1009030254.jpg'},
         { id: 2, title: 'Активная сторона бесконечности', author: 'Карлос Кастанеда', genre: 'Эзотерика', popular:6, price: 9, coverImage:'https://cdn1.ozone.ru/s3/multimedia-b/wc1200/6008920343.jpg'},
         { id: 3, title: 'Сила безмолвия', author: 'Карлос Кастанеда', genre: 'Эзотерика', popular: 6, price: 13, coverImage:'https://cdn1.ozone.ru/s3/multimedia-c/wc1200/6008920344.jpg'},

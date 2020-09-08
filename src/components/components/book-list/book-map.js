@@ -2,7 +2,7 @@ import BookListItem from "../book-list-item";
 import React from "react";
 
 const BooksMap = ({books, onAddedToCart}) => {
-
+    console.log(`BookMap : `, books)
     return (
         <React.Fragment>
             <form className="form-inline my-2 my-lg-0">
@@ -22,4 +22,4 @@ const BooksMap = ({books, onAddedToCart}) => {
         </React.Fragment>
         )
 }
-export default BooksMap
+export default BooksMap;

@@ -35,7 +35,7 @@ mongoose.connect(config.DB, {useNewUrlParser: true}).then(
 app.use(passport.initialize());
 require('./passport')(passport);
 
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/api/users', users);
