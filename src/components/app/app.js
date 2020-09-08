@@ -11,6 +11,8 @@ import Footer from "../footer";
 import BookPage from "../pages/book/book-page";
 import LoginPage from "../pages/login/login-page";
 import RegisterPage from "../pages/register/register-page";
+import AdminPage from "../pages/admin/admin-page";
+
 import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import store from "../../store";
@@ -43,10 +45,11 @@ const App = () => {
                     <Route path="/books/esoteric/:id" component={Error}/>
                     <Route path="/books/economic/" exact component={Loading}/>
                     <Route path="/books/economic/:id" component={Error}/>
-                    <Route path="/about" component={AboutPage}/>
-                    <Route path="/login" component={LoginPage}/>
-                    <Route path="/register" component={RegisterPage}/>
-                    <Route path="/basket" component={BasketPage}/>
+                    <Route path="/about" exact component={AboutPage}/>
+                    <Route path="/login" exact component={LoginPage}/>
+                    <Route path="/register" exact component={RegisterPage}/>
+                    <Route path="/basket" exact component={BasketPage}/>
+                    <Route path="/admin" exact component={AdminPage}/>
                     <Route render={() => {
                         return (
                                 <React.Fragment>
