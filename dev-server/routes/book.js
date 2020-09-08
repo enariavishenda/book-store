@@ -10,4 +10,4 @@ router.delete('/book/:id', deleteBook)
 router.get('/book/:id', getBooksById)
 router.get('/books', getBooks)
 
-export default router
+module.exports = router;

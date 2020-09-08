@@ -3,6 +3,7 @@ import express from 'express' //babel test
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport')
@@ -12,6 +13,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const users = require('./routes/user');
 const testTest = require('./routes/test')
+const booksRouter = require('./routes/book')
 
 const app = express();
 
@@ -38,6 +40,7 @@ app.use(bodyParser.json());
 
 app.use('/api/users', users);
 app.use('/api/users', testTest);
+app.use('/api', booksRouter);
 
 app.get('/', function(req, res) {
   res.send('hello');
