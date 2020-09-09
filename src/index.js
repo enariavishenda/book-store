@@ -8,7 +8,7 @@ import ErrorBoundry from "./components/error-boundry";
 import {BookProvider} from "./components/service-context";
 import {Provider} from "react-redux";
 
-const book_api = new BookService()
+const book_api = new DevBookService()
 
 ReactDOM.render(
     <Provider store={store}>

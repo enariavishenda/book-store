@@ -21,7 +21,7 @@ router.post('/book', (req, res) => {
     book.save().then(() => {
         return res.status(201).json({
             success: true,
-            id: book.id,
+            id: book._id,
             message: 'Книга создана',
         })
     }).catch(error => {
@@ -42,7 +42,7 @@ router.put('/book/:id', (req, res) => {
         })
     }
 
-    Book.findOne({ id: req.params.id }, (err, book) => {
+    Book.findOne({ _id: req.params.id }, (err, book) => {
         if (err) {
             return res.status(404).json({
                 err,
@@ -60,7 +60,7 @@ router.put('/book/:id', (req, res) => {
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: book.id,
+                    id: book._id,
                     message: 'Книга обновлена',
                 })
             })
@@ -86,10 +86,11 @@ router.delete('/book/:id', (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: book })
-    }).catch(err => console.log(err))
+    })
 })
+
 router.get('/book/:id', (req, res) => {
-    Book.findOne({id: req.param.id}, (err, book) => {
+    Book.findOne({_id: req.params.id}, (err, book) => {
         if (err) {
             return res.status(400).json({success: false, error: err})
         }
@@ -97,9 +98,9 @@ router.get('/book/:id', (req, res) => {
             return res.status(404).json({success: false, error: 'Книга не найдена'})
         }
         return res.status(200).json({success: true, data: book})
-            .catch((err) => console.log(err))
     })
 })
+
 router.get('/books', (req, res) => {
     Book.find({}, (err, books) => {
         if (err) {
@@ -109,7 +110,6 @@ router.get('/books', (req, res) => {
             return res.status(404).json({success: false, error: 'Книги не найдены'})
         }
         return res.status(200).json({success: true, data: books})
-        //.catch((err) => console.log(err))
     })
 })
 
