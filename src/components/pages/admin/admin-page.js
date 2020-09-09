@@ -7,31 +7,36 @@ import compose from "../../hoc/compose";
 import withAdmin from "../../hoc/hoc-admin";
 import withService from "../../hoc/hoc-service";
 import {fetchBooks, createBook, updateBook, deleteBook, getBookId} from "../../../actions";
+import BooksMap from "../../components/book-list/book-map";
 
 
 
-const AdminPage = ({books, addBook, updBook, delBook, byIdBook}) => {
+const AdminPage = ({...props}) => {
 
+    const {books, addBook, updBook, delBook, byIdBook} = props
 
 
     return (
         <div className="jumbotron text-center">
             <h3>It's Admin Page (CRUD)</h3>
-
+            <BooksMap {...props}/>
         </div>
     )
 }
 
-const mapStateToProps = ({bookList: { books }}) => {
+const mapStateToProps = ({bookList: { books, error, loading }}) => {
     return {
-        books
+        books,
+        error,
+        loading
     }
 }
 
 
-const mapDispatchToProps = (dispatch) => () => {
+const mapDispatchToProps = (dispatch, ownProps) => () => {
+    const {book_api} = ownProps
     return  bindActionCreators({
-        fetchBook: fetchBooks,
+        fetBook: fetchBooks(book_api),
         createBook: createBook,
         updateBook: updateBook,
         deleteBook: deleteBook,
@@ -40,7 +45,7 @@ const mapDispatchToProps = (dispatch) => () => {
 }
 
 export default compose(
-    withService,
+    withService(),
     connect(mapStateToProps, mapDispatchToProps),
     withAdmin
 )(AdminPage)

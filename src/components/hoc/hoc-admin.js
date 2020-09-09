@@ -7,9 +7,8 @@ const withAdmin = (View) => {
     return class extends Component {
 
         componentDidMount() {
-            this.props.fetchBooks()
+            this.props.fetBook()
         }
-
 
 
         render() {

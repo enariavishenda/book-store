@@ -113,31 +113,19 @@ const logoutUser = (history) => (dispatch) => {
 }
 
 const createBook = (addBook) => {
-    return {
-        type: 'CREATE_BOOK',
-        payload: addBook
-    }
+
 }
 
 const updateBook = (updateBook) => {
-    return {
-        type: 'UPDATE_BOOK',
-        payload: updateBook
-    }
+
 }
 
 const deleteBook = (addBook) => {
-    return {
-        type: 'DELETE_BOOK',
-        payload: addBook
-    }
+
 }
 
 const getBookId = (id) => {
-    return {
-        type: 'GET_ID_BOOK',
-        payload: id
-    }
+
 }
 
 export {
