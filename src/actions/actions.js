@@ -112,6 +112,34 @@ const logoutUser = (history) => (dispatch) => {
     history.push('/login')
 }
 
+const createBook = (addBook) => {
+    return {
+        type: 'CREATE_BOOK',
+        payload: addBook
+    }
+}
+
+const updateBook = (updateBook) => {
+    return {
+        type: 'UPDATE_BOOK',
+        payload: updateBook
+    }
+}
+
+const deleteBook = (addBook) => {
+    return {
+        type: 'DELETE_BOOK',
+        payload: addBook
+    }
+}
+
+const getBookId = (id) => {
+    return {
+        type: 'GET_ID_BOOK',
+        payload: id
+    }
+}
+
 export {
     fetchBooks,
     bookAddedToCart,
@@ -123,5 +151,9 @@ export {
     registerUser,
     loginUser,
     setCurrentUser,
-    logoutUser
+    logoutUser,
+    createBook,
+    updateBook,
+    deleteBook,
+    getBookId
 }

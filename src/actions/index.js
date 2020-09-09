@@ -2,7 +2,11 @@ import { fetchBooks, bookAddedToCart, onIncrement, onDelete, onDecrement, fetchL
     registerUser,
     loginUser,
     setCurrentUser,
-    logoutUser } from "./actions";
+    logoutUser,
+    createBook,
+    updateBook,
+    deleteBook,
+    getBookId} from "./actions";
 
 export {
     fetchBooks,
@@ -12,5 +16,9 @@ export {
     registerUser,
     loginUser,
     setCurrentUser,
-    logoutUser
+    logoutUser,
+    createBook,
+    updateBook,
+    deleteBook,
+    getBookId
 }
