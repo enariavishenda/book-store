@@ -10,9 +10,21 @@ const withAdmin = (View) => {
             this.props.fetBook()
         }
 
+        addBook = (id) => {
+            console.log('Add Book', id)
+        }
+        updBook = (id) => {
+            console.log('Update Book', id)
+        }
+        delBook = (id) => {
+            console.log('Delete Book', id)
+        }
+        byIdBook = (id) => {
+            console.log('Get Book By Id', id)
+        }
 
         render() {
-            const {books, loading, error, addBook, updBook, delBook, byIdBook} = this.props
+            const {books, loading, error} = this.props
             if (loading) {
                 return <Loading/>
             }
@@ -20,10 +32,10 @@ const withAdmin = (View) => {
                 return <Error />
             }
             return <View books={books}
-                         addBook={addBook}
-                         updBook={updBook}
-                         delBook={delBook}
-                         byIdBook={byIdBook}/>
+                         addBook={this.addBook}
+                         updBook={this.updBook}
+                         delBook={this.delBook}
+                         byIdBook={this.byIdBook}/>
         }
     }
 }
