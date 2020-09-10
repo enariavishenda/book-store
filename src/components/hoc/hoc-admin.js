@@ -6,8 +6,37 @@ const withAdmin = (View) => {
 
     return class extends Component {
 
+        state = {
+            title: 'test',
+            author: 'test',
+            genre: 'test',
+            popular: null,
+            price: null,
+            coverImage: 'https://img.pngio.com/happy-pepe-transparent-png-stickpng-pepe-transparent-1280_1280.png'
+        }
+
         componentDidMount() {
             this.props.fetBook()
+        }
+
+        inputChange = (label) => {
+            this.setState({
+                [label.target.name]: label.target.value
+            })
+        }
+
+        inputSubmit = (label) => {
+            label.preventDefault()
+            const { title, author, genre, popular, price, coverImage } = this.state
+            const book = {
+                title,
+                author,
+                genre,
+                popular,
+                price,
+                coverImage
+            }
+            this.props.createBook(book)
         }
 
         addBook = (id) => {
@@ -32,7 +61,8 @@ const withAdmin = (View) => {
                 return <Error />
             }
             return <View books={books}
-                         addBook={this.addBook}
+                         state = {this.state}
+                         addBook={this.inputSubmit}
                          updBook={this.updBook}
                          delBook={this.delBook}
                          byIdBook={this.byIdBook}/>

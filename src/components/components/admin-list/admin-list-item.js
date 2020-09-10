@@ -5,10 +5,15 @@ import './admin-list-item.css';
 const AdminBookList = ({books, delBook, byIdBook, addBook, updBook}) => {
 
     return (<React.Fragment>
-            <button
-                onClick={() => addBook()}
-                className="btn btn-primary">Добавить книгу
-            </button>
+            <form onSubmit={addBook}>
+
+                <button
+                    onClick={addBook}
+                    type="submit"
+                    className="btn btn-primary">Добавить книгу
+                </button>
+            </form>
+
         {books.map((item) => {
                 const {title, author, price, coverImage} = item
                 return (
