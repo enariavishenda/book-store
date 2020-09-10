@@ -66,7 +66,7 @@ const logIn = (user) => {
 
 const fetchLogin = () => { //redux-saga
     return {
-        type: 'REQUEST_LOGIN'
+        type: 'REQUEST_LOGIN_SAGAS'
     }
 }
 
@@ -114,29 +114,36 @@ const logoutUser = (history) => (dispatch) => {
 
 const createBook = (addBook) => {
     return {
-        type: 'CREATE_BOOK',
+        type: 'CREATE_BOOK_SAGAS',
         payload: addBook
     }
 }
 
 const updateBook = (updateBook) => {
     return {
-        type: 'UPDATE_BOOK',
+        type: 'UPDATE_BOOK_SAGAS',
         payload: updateBook
     }
 }
 
 const deleteBook = (deleteBook) => {
     return {
-        type: 'DELETE_BOOK',
+        type: 'DELETE_BOOK_SAGAS',
         payload: deleteBook
     }
 }
 
 const getBookId = (id) => {
     return {
-        type: 'GET_BOOK_BY_ID',
+        type: 'GET_BOOK_BY_ID_SAGAS',
         payload: id
+    }
+}
+
+const crudBook = (crud) => {
+    return {
+        type: 'CRUD_BOOK',
+        payload: crud
     }
 }
 
@@ -155,5 +162,6 @@ export {
     createBook,
     updateBook,
     deleteBook,
-    getBookId
+    getBookId,
+    crudBook
 }

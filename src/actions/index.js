@@ -6,7 +6,9 @@ import { fetchBooks, bookAddedToCart, onIncrement, onDelete, onDecrement, fetchL
     createBook,
     updateBook,
     deleteBook,
-    getBookId} from "./actions";
+    getBookId,
+    crudBook
+} from "./actions";
 
 export {
     fetchBooks,
@@ -20,5 +22,6 @@ export {
     createBook,
     updateBook,
     deleteBook,
-    getBookId
+    getBookId,
+    crudBook
 }
