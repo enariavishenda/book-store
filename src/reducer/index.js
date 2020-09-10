@@ -3,7 +3,7 @@ import updateShoppingCart from "./shopping-cart";
 import updateLogin from "./login";
 import errorReducer from "./errorReducer";
 import authReducer from "./authReducer";
-
+import adminReducer from "./adminReducer";
 
 const reducer = (state, action) => {
     return {
@@ -11,7 +11,8 @@ const reducer = (state, action) => {
         shoppingCart: updateShoppingCart(state, action),
         login: updateLogin(state, action),
         error: errorReducer(state, action),
-        auth: authReducer(state, action)
+        auth: authReducer(state, action),
+        admin: adminReducer(state, action)
     }
 }
 

@@ -8,8 +8,7 @@ export default class DevBookService {
     }
 
     getBooks = () => axios.get(`/api/books`).then((response) => {
-        const data = response.data.data
-            .map(obj => this.replaceKeys(obj, /_/g, ''))
+        const data = response.data.data.map(obj => this.replaceKeys(obj, /_/g, ''))
         console.log(data)
         return data
     })
