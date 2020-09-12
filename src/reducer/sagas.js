@@ -18,8 +18,8 @@ function* sagaFetchLogin() {
     yield put(logIn(payload))
 }
 
-function* sagaCBook(input) {
-    const payload = yield call(createBook, input)
+function* sagaCBook(addBook) {
+    const payload = yield call(createBook, addBook.payload)
     yield put(crudBook(payload))
 }
 

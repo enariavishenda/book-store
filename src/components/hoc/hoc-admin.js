@@ -10,8 +10,8 @@ const withAdmin = (View) => {
             title: 'test',
             author: 'test',
             genre: 'test',
-            popular: null,
-            price: null,
+            popular: 10,
+            price: 100,
             coverImage: 'https://img.pngio.com/happy-pepe-transparent-png-stickpng-pepe-transparent-1280_1280.png'
         }
 
