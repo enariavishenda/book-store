@@ -126,10 +126,10 @@ const updateBook = (updateBook) => {
     }
 }
 
-const deleteBook = (deleteBook) => {
+const deleteBook = (delBook) => {
     return {
         type: 'DELETE_BOOK_SAGAS',
-        payload: deleteBook
+        payload: delBook
     }
 }
 

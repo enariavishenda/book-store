@@ -28,7 +28,7 @@ function* sagaCBook(addBook) {
 //     yield put(crudBook(payload))
 // }
 // function* sagaDBook() {
-//     const payload = yield call()
+//     const payload = yield call(deleteBook, delBook.payload)
 //     yield put(crudBook(payload))
 // }
 // function* sagaGBIBook() {
@@ -45,5 +45,10 @@ async function fetchLogin() {
 async function createBook(payload) {
     const res = await axios.post(`/api/book`, payload)
     console.log(res.json())
+    return res.json()
+}
+async function deleteBook(id) {
+    const res = await axios.delete(`/api/book/${id}`)
+    console.log(res.json)
     return res.json()
 }

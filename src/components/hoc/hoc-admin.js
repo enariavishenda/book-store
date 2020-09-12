@@ -62,6 +62,7 @@ const withAdmin = (View) => {
             }
             return <View books={books}
                          state = {this.state}
+                         inputChange={this.inputChange}
                          addBook={this.inputSubmit}
                          updBook={this.updBook}
                          delBook={this.delBook}

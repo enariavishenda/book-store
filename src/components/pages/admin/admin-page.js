@@ -14,13 +14,15 @@ import {AdminBookList} from "../../components";
 
 const AdminPage = ({...props}) => {
 
-    const {books, addBook, updBook, delBook, byIdBook} = props
+    const {books, addBook, updBook, delBook, byIdBook, state, inputChange} = props
 
 
     return (
         <div className="jumbotron text-center">
             <h3>It's Admin Page (CRUD)</h3>
             <AdminBookList books={books}
+                           state = {state}
+                           inputChange={inputChange}
                            delBook={delBook}
                            addBook={addBook}
                            updBook={updBook}
