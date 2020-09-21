@@ -47,6 +47,7 @@ const withAdmin = (View) => {
         }
         delBook = (id) => {
             console.log('Delete Book', id)
+            this.props.deleteBook(id)
         }
         byIdBook = (id) => {
             console.log('Get Book By Id', id)

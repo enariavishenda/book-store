@@ -7,7 +7,7 @@ export function* sagaWatcher () {
     yield takeEvery('REQUEST_LOGIN_SAGAS', sagaFetchLogin)
     yield takeEvery('CREATE_BOOK_SAGAS', sagaCBook)
     // yield takeEvery('UPDATE_BOOK_SAGAS', sagaUBook)
-    // yield takeEvery('DELETE_BOOK_SAGAS', sagaDBook)
+    yield takeEvery('DELETE_BOOK_SAGAS', sagaDBook)
     // yield takeEvery('GET_BOOK_BY_ID_SAGAS', sagaGBIBook)
 }
 
@@ -18,19 +18,19 @@ function* sagaFetchLogin() {
     yield put(logIn(payload))
 }
 
+
 function* sagaCBook(addBook) {
     const payload = yield call(createBook, addBook.payload)
     yield put(crudBook(payload))
 }
-
 // function* sagaUBook() {
 //     const payload = yield call()
 //     yield put(crudBook(payload))
 // }
-// function* sagaDBook() {
-//     const payload = yield call(deleteBook, delBook.payload)
-//     yield put(crudBook(payload))
-// }
+function* sagaDBook(delBook) {
+    const payload = yield call(deleteBook, delBook.payload)
+    yield put(crudBook(payload))
+}
 // function* sagaGBIBook() {
 //     const payload = yield call()
 //     yield put(crudBook(payload))
@@ -44,11 +44,11 @@ async function fetchLogin() {
 
 async function createBook(payload) {
     const res = await axios.post(`/api/book`, payload)
-    console.log(res.json())
-    return res.json()
+    console.log(res.json)
+    return res.json
 }
 async function deleteBook(id) {
     const res = await axios.delete(`/api/book/${id}`)
     console.log(res.json)
-    return res.json()
+    return res.json
 }
