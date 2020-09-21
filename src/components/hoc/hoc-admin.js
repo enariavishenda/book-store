@@ -37,17 +37,16 @@ const withAdmin = (View) => {
                 coverImage
             }
             this.props.createBook(book)
+            this.props.fetBook()
         }
 
-        addBook = (id) => {
-            console.log('Add Book', id)
-        }
         updBook = (id) => {
             console.log('Update Book', id)
         }
         delBook = (id) => {
             console.log('Delete Book', id)
             this.props.deleteBook(id)
+            this.props.fetBook()
         }
         byIdBook = (id) => {
             console.log('Get Book By Id', id)
