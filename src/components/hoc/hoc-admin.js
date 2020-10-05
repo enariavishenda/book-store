@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import axios from 'axios'
+
 import Loading from "../loading";
 import Error from "../error-indicator";
 
@@ -7,12 +9,12 @@ const withAdmin = (View) => {
     return class extends Component {
 
         state = {
-            title: 'test',
-            author: 'test',
-            genre: 'test',
-            popular: 10,
-            price: 100,
-            coverImage: 'https://img.pngio.com/happy-pepe-transparent-png-stickpng-pepe-transparent-1280_1280.png'
+            title: '',
+            author: '',
+            genre: '',
+            popular: 0,
+            price: 0,
+            coverImage: ''
         }
 
         componentDidMount() {

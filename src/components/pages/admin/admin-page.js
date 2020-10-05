@@ -18,17 +18,19 @@ const AdminPage = ({...props}) => {
 
 
     return (
-        <div className="jumbotron text-center">
-            <h3>It's Admin Page (CRUD)</h3>
-            <AdminBookList books={books}
-                           state = {state}
-                           inputChange={inputChange}
-                           delBook={delBook}
-                           addBook={addBook}
-                           updBook={updBook}
-                           byIdBook={byIdBook}
-            />
-        </div>
+        <main role="main" className="container">
+            <div className="jumbotron text-center">
+                <h3>It's Admin Page (CRUD)</h3>
+                <AdminBookList books={books}
+                               state={state}
+                               inputChange={inputChange}
+                               delBook={delBook}
+                               addBook={addBook}
+                               updBook={updBook}
+                               byIdBook={byIdBook}
+                />
+            </div>
+        </main>
     )
 }
 

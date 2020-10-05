@@ -29,6 +29,10 @@
     font-size: 1.4rem;
 }
 
+.book-list-item .book-details .book-other {
+    font-size: 1.3rem;
+}
+
 .book-list-item .book-details .button-list {
     margin: 5px 0;
 }
