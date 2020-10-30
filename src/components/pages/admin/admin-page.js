@@ -3,6 +3,7 @@ import './admin-page.css'
 
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import { withRouter } from 'react-router-dom'
 import compose from "../../hoc/compose";
 import withAdmin from "../../hoc/hoc-admin";
 import withService from "../../hoc/hoc-service";
@@ -10,11 +11,9 @@ import {fetchBooks, createBook, updateBook, deleteBook, getBookId} from "../../.
 import {AdminBookList} from "../../components";
 
 
-
-
 const AdminPage = ({...props}) => {
 
-    const {books, addBook, updBook, delBook, byIdBook, state, inputChange} = props
+    const {books, addBook, delBook, byIdBook, state, inputChange} = props
 
 
     return (
@@ -26,7 +25,6 @@ const AdminPage = ({...props}) => {
                                inputChange={inputChange}
                                delBook={delBook}
                                addBook={addBook}
-                               updBook={updBook}
                                byIdBook={byIdBook}
                 />
             </div>
@@ -57,4 +55,4 @@ export default compose(
     withService(),
     connect(mapStateToProps, mapDispatchToProps),
     withAdmin
-)(AdminPage)
+)(withRouter(AdminPage))

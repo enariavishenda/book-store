@@ -3,7 +3,7 @@ import React from "react";
 import './admin-list-item.css';
 import defaultCover from './none.png'
 
-const AdminBookList = ({books, delBook, byIdBook, addBook, updBook, state, inputChange}) => {
+const AdminBookList = ({books, delBook, byIdBook, addBook, state, inputChange}) => {
 
     const {title, author, genre, popular, price, coverImage} = state
 
@@ -89,12 +89,8 @@ const AdminBookList = ({books, delBook, byIdBook, addBook, updBook, state, input
                                         className="btn btn-danger">Удалить
                                     </button>
                                     <button
-                                        onClick={() => updBook(item.id)}
-                                        className="btn btn-secondary">Изменить
-                                    </button>
-                                    <button
                                         onClick={() => byIdBook(item.id)}
-                                        className="btn btn-info">Книга по элементу
+                                        className="btn btn-info">Изменить
                                     </button>
                                 </div>
 

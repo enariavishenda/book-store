@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios'
 
 import Loading from "../loading";
 import Error from "../error-indicator";
@@ -42,9 +41,6 @@ const withAdmin = (View) => {
             this.props.fetBook()
         }
 
-        updBook = (id) => {
-            console.log('Update Book', id)
-        }
         delBook = (id) => {
             console.log('Delete Book', id)
             this.props.deleteBook(id)
@@ -52,6 +48,8 @@ const withAdmin = (View) => {
         }
         byIdBook = (id) => {
             console.log('Get Book By Id', id)
+            this.props.getBookId(id)
+            this.props.history.push(`/admin/${id}`)
         }
 
         render() {
@@ -66,7 +64,6 @@ const withAdmin = (View) => {
                          state = {this.state}
                          inputChange={this.inputChange}
                          addBook={this.inputSubmit}
-                         updBook={this.updBook}
                          delBook={this.delBook}
                          byIdBook={this.byIdBook}/>
         }

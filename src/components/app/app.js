@@ -17,6 +17,7 @@ import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import store from "../../store";
 import {logoutUser, setCurrentUser} from "../../actions";
+import AdminPageDetails from "../pages/admin/admin-details";
 
 
 if (localStorage.jwtToken) {
@@ -50,6 +51,7 @@ const App = () => {
                     <Route path="/register" exact component={RegisterPage}/>
                     <Route path="/basket" exact component={BasketPage}/>
                     <Route path="/admin" exact component={AdminPage}/>
+                    <Route path="/admin/:id" exact component={AdminPageDetails}/>
                     <Route render={() => {
                         return (
                                 <React.Fragment>
