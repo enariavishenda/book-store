@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import compose from "../../hoc/compose";
 import withAdmin from "../../hoc/hoc-admin";
 import withService from "../../hoc/hoc-service";
-import {fetchBooks, createBook, updateBook, deleteBook, getBookId} from "../../../actions";
+import {getBook, createBook, updateBook, deleteBook, getBookId} from "../../../actions";
 import {AdminBookList} from "../../components";
 
 
@@ -41,9 +41,9 @@ const mapStateToProps = ({bookList: { books, error, loading} }) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => () => {
-    const {book_api} = ownProps
+
     return  bindActionCreators({
-        fetBook: fetchBooks(book_api),
+        fetBook: getBook,
         createBook: createBook,
         updateBook: updateBook,
         deleteBook: deleteBook,

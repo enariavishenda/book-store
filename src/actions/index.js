@@ -1,4 +1,4 @@
-import { fetchBooks, bookAddedToCart, onIncrement, onDelete, onDecrement, fetchLogin,
+import { bookAddedToCart, onIncrement, onDelete, onDecrement, fetchLogin,
     registerUser,
     loginUser,
     setCurrentUser,
@@ -7,11 +7,11 @@ import { fetchBooks, bookAddedToCart, onIncrement, onDelete, onDecrement, fetchL
     updateBook,
     deleteBook,
     getBookId,
-    crudBook
+    crudBook,
+    getBook
 } from "./actions";
 
 export {
-    fetchBooks,
     bookAddedToCart,
     onIncrement, onDelete, onDecrement,
     fetchLogin,
@@ -23,5 +23,6 @@ export {
     updateBook,
     deleteBook,
     getBookId,
-    crudBook
+    crudBook,
+    getBook
 }

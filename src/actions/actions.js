@@ -50,11 +50,10 @@ const onDelete = (bookId) => {
     }
 }
 
-const fetchBooks = (book_api) => () => (dispatch) => {
-    dispatch(booksRequested())
-    book_api.getBooks()
-        .then((data) => dispatch(booksLoaded(data)))
-        .catch((err) => dispatch(booksError(err)))
+const getBook = () => { //saga
+    return {
+        type: 'REQUEST_BOOKS_SAGAS'
+    }
 }
 
 const logIn = (user) => {
@@ -148,7 +147,6 @@ const crudBook = (crud) => {
 }
 
 export {
-    fetchBooks,
     bookAddedToCart,
     onIncrement,
     onDecrement,
@@ -163,5 +161,7 @@ export {
     updateBook,
     deleteBook,
     getBookId,
-    crudBook
+    crudBook,
+    booksLoaded,
+    getBook
 }

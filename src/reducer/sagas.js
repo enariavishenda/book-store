@@ -1,5 +1,5 @@
 import {takeEvery, put, call} from 'redux-saga/effects'
-import {logIn, crudBook} from "../actions/actions";
+import {logIn, crudBook, booksLoaded} from "../actions/actions";
 import axios from "axios";
 import {replaceKeys} from "../services/dev-server-service";
 
@@ -22,8 +22,7 @@ function* sagaFetchLogin() {
 
 function* sagaGetBook() {
     const payload = yield call(getBooks)
-    console.log(payload)
-    yield put(crudBook(payload))
+    yield put(booksLoaded(payload))
 }
 
 function* sagaCBook(addBook) {
@@ -51,8 +50,7 @@ async function fetchLogin() {
 
 async function getBooks() {
     const res = await axios.get('/api/books')
-    const books = res.data.data.map(obj => replaceKeys(obj, /_/g, ''))
-    return books
+    return res.data.data.map(obj => replaceKeys(obj, /_/g, ''))
 }
 
 async function createBook(payload) {
