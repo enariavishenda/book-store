@@ -146,7 +146,15 @@ const crudBook = (crud) => {
     }
 }
 
+const getError = (error) => {
+    return {
+        type: 'ERROR_ADMIN',
+        payload: error
+    }
+}
+
 export {
+    getError,
     bookAddedToCart,
     onIncrement,
     onDecrement,

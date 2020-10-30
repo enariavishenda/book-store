@@ -18,3 +18,7 @@ export function replaceKeys (obj, find, replace) {
     return Object.keys(obj).reduce (
         (abc, key) => Object.assign(abc, { [key.replace(find, replace)]: obj[key] }), {});
 }
+
+export function errorCatch () {
+    return
+}

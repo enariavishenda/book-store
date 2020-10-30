@@ -8,7 +8,8 @@ import { bookAddedToCart, onIncrement, onDelete, onDecrement, fetchLogin,
     deleteBook,
     getBookId,
     crudBook,
-    getBook
+    getBook,
+    getError
 } from "./actions";
 
 export {
@@ -24,5 +25,6 @@ export {
     deleteBook,
     getBookId,
     crudBook,
-    getBook
+    getBook,
+    getError
 }

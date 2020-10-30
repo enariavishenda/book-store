@@ -1,10 +1,10 @@
 import {takeEvery, put, call} from 'redux-saga/effects'
-import {logIn, crudBook, booksLoaded} from "../actions/actions";
+import {logIn, crudBook, booksLoaded, getError} from "../actions/actions";
 import axios from "axios";
 import {replaceKeys} from "../services/dev-server-service";
 
 // watchers
-export function* sagaWatcher () {
+export function* sagaWatcher() {
     yield takeEvery('REQUEST_BOOKS_SAGAS', sagaGetBook)
     yield takeEvery('REQUEST_LOGIN_SAGAS', sagaFetchLogin)
     yield takeEvery('CREATE_BOOK_SAGAS', sagaCBook)
@@ -26,17 +26,34 @@ function* sagaGetBook() {
 }
 
 function* sagaCBook(addBook) {
+    try {
     const payload = yield call(createBook, addBook.payload)
     yield put(crudBook(payload))
 }
+    catch (e) {
+        yield put(crudBook(e.response.data))
+    }
+}
+
 function* sagaUBook(updBook) {
-    const payload = yield call()
-    yield put(crudBook(payload))
+    try {
+        const payload = yield call(updateBook, updBook.payload)
+        yield put(crudBook(payload))
+    } catch (e) {
+        yield put(crudBook(e.response.data))
+    }
 }
+
 function* sagaDBook(delBook) {
-    const payload = yield call(deleteBook, delBook.payload)
-    yield put(crudBook(payload))
+    try {
+        const payload = yield call(deleteBook, delBook.payload)
+        yield put(crudBook(payload))
+    }
+    catch (e) {
+        yield put(crudBook(e.response.data))
+    }
 }
+
 function* sagaGBIBook(getBYID) {
     const payload = yield call(getIDBook, getBYID.payload)
     yield put(crudBook(payload))
@@ -57,12 +74,14 @@ async function createBook(payload) {
     const res = await axios.post(`/api/book`, payload)
     return res.data
 }
+
 async function deleteBook(id) {
     const res = await axios.delete(`/api/book/${id}`)
     return res.data
 }
-async function updateBook(id, payload) {
-    const res = await axios.put(`/api/book/${id}`, payload)
+
+async function updateBook(payload) {
+    const res = await axios.put(`/api/book/${payload.id}`, payload)
     return res.data
 }
 

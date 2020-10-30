@@ -75,6 +75,7 @@ const AdminPageDetails = ({...props}) => {
                             type="submit"
                             className="btn btn-primary button-list">Обновить книгу
                         </button>
+                        {admin.message && (<div className="text-danger">{admin.message}</div>)}
                     </div>
                 </form>
             </div>

@@ -14,10 +14,6 @@ const withAdminDetails = (View) => {
             coverImage: ''
         }
 
-        componentDidUpdate(prevProps, prevState, snapshot) {
-            console.log('пропсы',this.props)
-        }
-
         inputChange = (label) => {
             this.setState({
                 [label.target.name]: label.target.value
@@ -33,10 +29,11 @@ const withAdminDetails = (View) => {
                 genre,
                 popular,
                 price,
-                coverImage
+                coverImage,
+                id: this.props.match.params.id
             }
-            // this.props.createBook(book)
             console.log(book)
+            this.props.updateBook(book)
         }
 
         render() {

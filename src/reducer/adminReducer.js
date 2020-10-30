@@ -8,6 +8,8 @@ const adminReducer = (state, action) => {
     switch (action.type) {
         case 'CRUD_BOOK':
             return action.payload;
+        case 'ERROR_ADMIN':
+            return action.payload;
         default:
             return state.admin
     }
