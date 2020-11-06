@@ -32,6 +32,13 @@ class Header extends Component {
                 </Link>
             </form>
         )
+        const adminLinks = (
+            <ul className="navbar-nav mr-right">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/admin">Администрирование</Link>
+                </li>
+            </ul>
+        )
         return (
             <nav className="nav navbar navbar-expand-lg navbar-light bg-light ">
                 <Link className="navbar-brand"
@@ -68,9 +75,10 @@ class Header extends Component {
                             <Link className="nav-link" to="/about">Дополнительная информация</Link>
                         </li>
                     </ul>
+                    {(isAuthenticated && (user.type === 'admin')) ? adminLinks : null}
                     <ul className="navbar-nav mr-right">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/basket/">Корзина
+                            <Link className="nav-link" to="/basket">Корзина
                                 <span> </span>
                                 <span className="badge badge-primary badge-pill">{numItems}</span>
                             </Link>
