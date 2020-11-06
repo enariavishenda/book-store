@@ -41,7 +41,6 @@ const withUsers = (View) => {
                 this.setState({
                     errors: nextProps.error
                 })
-                console.log(nextProps.error)
             }
         }
 

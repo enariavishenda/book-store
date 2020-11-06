@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Error from "../error-indicator";
 import Header from "../header";
@@ -23,12 +23,13 @@ import AdminPageDetails from "../pages/admin/admin-details";
 if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken)
     const decoded = jwt_decode(localStorage.jwtToken)
-    store.dispatch(setCurrentUser(decoded))
+    const {name, avatar, type} = decoded
+    store.dispatch(setCurrentUser({name, avatar, type}))
 
-    const currentTime = Date.now()/1000
+    const currentTime = Date.now() / 1000
     if (decoded.exp < currentTime) {
         store.dispatch(logoutUser())
-        window.location.href= '/login'
+        window.location.href = '/login'
     }
 }
 
@@ -36,7 +37,7 @@ const App = () => {
     return (
         <Router>
             <div>
-                <Header />
+                <Header/>
                 <Switch>
                     <Route path="/" exact component={HomePage}/>
                     <Route path="/books/" component={BookPage}/>
@@ -50,16 +51,27 @@ const App = () => {
                     <Route path="/login" exact component={LoginPage}/>
                     <Route path="/register" exact component={RegisterPage}/>
                     <Route path="/basket" exact component={BasketPage}/>
-                    <Route path="/admin" exact component={AdminPage}/>
-                    <Route path="/admin/:id" exact component={AdminPageDetails}/>
+                    <Route path="/admin" exact component={(ownProps) => {
+                        if (localStorage.jwtToken) {
+                        if (jwt_decode(localStorage.jwtToken).type === 'admin') {
+                            return <AdminPage {...ownProps} />
+                        }else return <Error/>} else return <Error/>
+                    }}/>
+                    <Route path="/admin/:id" exact component={(ownProps) => {
+                        if (localStorage.jwtToken) {
+                        if (jwt_decode(localStorage.jwtToken).type === 'admin') {
+                            return <AdminPageDetails {...ownProps} />
+                        }else return <Error/>} else return <Error/>
+                    }}/>
                     <Route render={() => {
                         return (
-                                <React.Fragment>
-                                    <Error/>
-                                    <h3 className="jumbotron text-center">Page not found</h3>
-                                </React.Fragment>)}} />
+                            <React.Fragment>
+                                <Error/>
+                                <h3 className="jumbotron text-center">Page not found</h3>
+                            </React.Fragment>)
+                    }}/>
                 </Switch>
-                <Footer />
+                <Footer/>
             </div>
         </Router>
     )

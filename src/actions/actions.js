@@ -93,8 +93,8 @@ const loginUser = (user) => (dispatch) => {
             const {token} = res.data
             localStorage.setItem('jwtToken', token)
             setAuthToken(token)
-            const decoded = jwt_decode(token)
-            dispatch(setCurrentUser(decoded))
+            const {name, avatar, type} = jwt_decode(token)
+            dispatch(setCurrentUser({name, avatar, type}))
         })
         .catch(err => {
             dispatch({
@@ -118,10 +118,10 @@ const createBook = (addBook) => {
     }
 }
 
-const updateBook = (updateBook) => {
+const updateBook = (uBook, history) => {
     return {
         type: 'UPDATE_BOOK_SAGAS',
-        payload: updateBook
+        payload: {uBook, history}
     }
 }
 

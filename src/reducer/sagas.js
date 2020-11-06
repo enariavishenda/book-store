@@ -1,7 +1,8 @@
 import {takeEvery, put, call} from 'redux-saga/effects'
-import {logIn, crudBook, booksLoaded, getError} from "../actions/actions";
+import {logIn, crudBook, booksLoaded} from "../actions/actions";
 import axios from "axios";
 import {replaceKeys} from "../services/dev-server-service";
+import {history} from 'react-router-dom'
 
 // watchers
 export function* sagaWatcher() {
@@ -35,10 +36,13 @@ function* sagaCBook(addBook) {
     }
 }
 
-function* sagaUBook(updBook) {
+function* sagaUBook({ payload: { uBook, history }}) {
     try {
-        const payload = yield call(updateBook, updBook.payload)
+        console.log('UPD BOOK WITH HISTORY', uBook, history)
+        const payload = yield call(updateBook, uBook)
+
         yield put(crudBook(payload))
+        history.push('/admin')
     } catch (e) {
         yield put(crudBook(e.response.data))
     }

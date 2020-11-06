@@ -31,11 +31,14 @@ router.post('/register', function(req, res) {
             // Добавление картинки пользователя будет позже
             const avatar = 'https://www.vhv.rs/dpng/d/120-1200250_aws-simple-icons-non-service-specific-user-profile.png';
 
+            const type = 'user'
+
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                avatar
+                avatar,
+                type
             });
 
             bcrypt.genSalt(10, (err, salt) => {
@@ -48,7 +51,7 @@ router.post('/register', function(req, res) {
                             newUser
                                 .save()
                                 .then(user => {
-                                    res.json(user)
+                                    res.json(user.type)
                                 });
                         }
                     });
@@ -81,7 +84,8 @@ router.post('/login', (req, res) => {
                         const payload = {
                             id: user.id,
                             name: user.name,
-                            avatar: user.avatar
+                            avatar: user.avatar,
+                            type: user.type
                         }
                         jwt.sign(payload, 'secret', {
                             expiresIn: 3600

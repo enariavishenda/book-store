@@ -5,6 +5,7 @@ import {bindActionCreators} from "redux";
 import compose from "../../hoc/compose";
 import {updateBook} from "../../../actions";
 import withAdminDetails from "../../hoc/hoc-admin-details";
+import {withRouter} from 'react-router-dom'
 
 const AdminPageDetails = ({...props}) => {
     const {state, admin, inputChange, updBook} = props
@@ -95,4 +96,6 @@ const mapDispatchToProps = (dispatch) => () => {
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
-    withAdminDetails)(AdminPageDetails)
+    withAdminDetails,
+    withRouter
+    )(AdminPageDetails)

@@ -32,8 +32,7 @@ const withAdminDetails = (View) => {
                 coverImage,
                 id: this.props.match.params.id
             }
-            console.log(book)
-            this.props.updateBook(book)
+            this.props.updateBook(book, this.props.history)
         }
 
         render() {
